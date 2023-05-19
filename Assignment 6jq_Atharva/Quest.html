@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <style>
+            #slideshow img {
+              display: none;
+              width: 80%;
+              height: auto;
+              object-fit: cover;
+            }
+          </style>
+
+    <title>SlideShow</title>
+</head>
+<body>
+    <div id="slideshow">
+    <img src="download (3).jpg" alt="Image 1" />
+    <img src="loki.jpg" alt="Image 2" />
+    <img src="download (4).jpg" alt="Image 3" />
+    <img src="flo1.jpg" alt="Image 4" />
+    <img src="flo2.jpg" alt="Image 5" />
+    <img src="img1.jpg" alt="Image 6" />
+    <img src="img2.jpg" alt="Image 7" />
+    <img src="download.jpg" alt="Image 8" />
+    <img src="download (1).jpg" alt="Image 9" />
+    <img src="download (2).jpg" alt="Image 10" />
+  </div>
+
+  
+  <script>
+    $(document).ready(function() {
+      var currentIndex = 0;
+      var images = $('#slideshow img');
+      var totalImages = images.length;
+
+      // Show the first image
+      images.eq(currentIndex).fadeIn();
+
+      // Function to fade out the current image and fade in the next image
+      function showNextImage() {
+        images.eq(currentIndex).fadeOut(function() {
+          currentIndex = (currentIndex + 1) % totalImages;
+          images.eq(currentIndex).fadeIn();
+        });
+      }
+
+      // Automatically change the image every 3 seconds
+      setInterval(showNextImage, 3000);
+    });
+  </script>
+</body>
+</html>
